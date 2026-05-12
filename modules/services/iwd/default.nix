@@ -53,54 +53,52 @@ in
     };
   };
 
-  config =
-    lib.mkIf cfg.enable {
-      services.iwd.settings = {
-        General = {
-          EnableNetworkConfiguration = true;
-        };
-
-        Network = {
-          NameResolvingService = if config.programs.resolvconf.enable then "resolvconf" else "none";
-        };
+  config = lib.mkIf cfg.enable {
+    services.iwd.settings = {
+      General = {
+        EnableNetworkConfiguration = true;
       };
 
-      environment.systemPackages = [ cfg.package ];
-      environment.etc."iwd/main.conf".source = format.generate "main.conf" cfg.settings;
-
-      services.dbus.packages = [ cfg.package ];
-
-      finit.tmpfiles.rules = [
-        "d /var/lib/iwd 0700"
-      ]
-      ++ lib.optionals cfg.enableEad [ "d /var/lib/ead 0700" ];
-
-      finit.services.iwd = {
-        description = "wireless service";
-        conditions = "service/syslogd/ready";
-        command = "${cfg.package}/libexec/iwd" + lib.optionalString cfg.debug " -d";
-        nohup = true;
-        log = true;
-
-        path = lib.optionals config.programs.resolvconf.enable [
-          config.programs.resolvconf.package
-        ];
-      };
-
-      # TODO: add finit.services.restartTriggers option
-      environment.etc."finit.d/iwd.conf".text = lib.mkAfter ''
-
-        # standard nixos trick to force a restart when something has changed
-        # ${config.environment.etc."iwd/main.conf".source}
-      '';
-    }
-    // lib.optionals cfg.enableEad {
-      finit.services.ead = lib.optionalAttrs cfg.enableEad {
-        description = "ethernet authentication service";
-        conditions = "service/syslogd/ready";
-        command = "${pkgs.iwd}/libexec/ead" + lib.optionalString (cfg.enableEad && cfg.debug) " -d";
-        nohup = true;
-        log = true;
+      Network = {
+        NameResolvingService = if config.programs.resolvconf.enable then "resolvconf" else "none";
       };
     };
+
+    environment.systemPackages = [ cfg.package ];
+    environment.etc."iwd/main.conf".source = format.generate "main.conf" cfg.settings;
+
+    services.dbus.packages = [ cfg.package ];
+
+    finit.tmpfiles.rules = [
+      "d /var/lib/iwd 0700"
+    ]
+    ++ lib.optionals cfg.enableEad [ "d /var/lib/ead 0700" ];
+
+    finit.services.iwd = {
+      description = "wireless service";
+      conditions = "service/syslogd/ready";
+      command = "${cfg.package}/libexec/iwd" + lib.optionalString cfg.debug " -d";
+      nohup = true;
+      log = true;
+
+      path = lib.optionals config.programs.resolvconf.enable [
+        config.programs.resolvconf.package
+      ];
+    };
+
+    finit.services.ead = lib.mkIf cfg.enableEad {
+      description = "ethernet authentication service";
+      conditions = "service/syslogd/ready";
+      command = "${pkgs.iwd}/libexec/ead" + lib.optionalString (cfg.enableEad && cfg.debug) " -d";
+      nohup = true;
+      log = true;
+    };
+
+    # TODO: add finit.services.restartTriggers option
+    environment.etc."finit.d/iwd.conf".text = lib.mkAfter ''
+
+      # standard nixos trick to force a restart when something has changed
+      # ${config.environment.etc."iwd/main.conf".source}
+    '';
+  };
 }
