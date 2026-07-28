@@ -90,6 +90,14 @@
   </li>
   
   <li>
+    <a href='#option-boot.init' title="boot.init">
+      boot.init
+      
+      
+    </a>
+  </li>
+  
+  <li>
     <a href='#option-boot.kernelModules' title="boot.kernelModules">
       boot.kernelModules
       
@@ -116,6 +124,14 @@
   <li>
     <a href='#option-boot.kernelPatches' title="boot.kernelPatches">
       boot.kernelPatches
+      
+      
+    </a>
+  </li>
+  
+  <li>
+    <a href='#option-boot.resumeDevice' title="boot.resumeDevice">
+      boot.resumeDevice
       
       
     </a>
@@ -1194,7 +1210,7 @@
     <details class="toc-category">
       <summary title="boot.loader">
         <span>boot.loader</span>
-        <span class="toc-count">2</span>
+        <span class="toc-count">4</span>
       </summary>
       <ul>
         
@@ -1211,6 +1227,22 @@
         <li>
           <a href='#option-boot.loader.efi.efiSysMountPoint' title="boot.loader.efi.efiSysMountPoint">
             efi.efiSysMountPoint
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-boot.loader.script.enable' title="boot.loader.script.enable">
+            script.enable
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-boot.loader.script.installHook' title="boot.loader.script.installHook">
+            script.installHook
             
             
           </a>
@@ -6358,7 +6390,7 @@
     <details class="toc-category">
       <summary title="services.dhcpcd">
         <span>services.dhcpcd</span>
-        <span class="toc-count">17</span>
+        <span class="toc-count">16</span>
       </summary>
       <ul>
         
@@ -6407,14 +6439,6 @@
         <li>
           <a href='#option-services.dhcpcd.settings' title="services.dhcpcd.settings">
             settings
-            
-            
-          </a>
-        </li>
-        
-        <li>
-          <a href='#option-services.dhcpcd.settings.background' title="services.dhcpcd.settings.background">
-            settings.background
             
             
           </a>
@@ -9686,7 +9710,7 @@
     <details class="toc-category">
       <summary title="swapDevices.*">
         <span>swapDevices.*</span>
-        <span class="toc-count">4</span>
+        <span class="toc-count">11</span>
       </summary>
       <ul>
         
@@ -9695,6 +9719,14 @@
         <li>
           <a href='#option-swapDevices._.device' title="swapDevices.*.device">
             device
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-swapDevices._.discardPolicy' title="swapDevices.*.discardPolicy">
+            discardPolicy
             
             
           </a>
@@ -9719,6 +9751,54 @@
         <li>
           <a href='#option-swapDevices._.priority' title="swapDevices.*.priority">
             priority
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-swapDevices._.randomEncryption.allowDiscards' title="swapDevices.*.randomEncryption.allowDiscards">
+            randomEncryption.allowDiscards
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-swapDevices._.randomEncryption.cipher' title="swapDevices.*.randomEncryption.cipher">
+            randomEncryption.cipher
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-swapDevices._.randomEncryption.enable' title="swapDevices.*.randomEncryption.enable">
+            randomEncryption.enable
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-swapDevices._.randomEncryption.keySize' title="swapDevices.*.randomEncryption.keySize">
+            randomEncryption.keySize
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-swapDevices._.randomEncryption.sectorSize' title="swapDevices.*.randomEncryption.sectorSize">
+            randomEncryption.sectorSize
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-swapDevices._.randomEncryption.source' title="swapDevices.*.randomEncryption.source">
+            randomEncryption.source
             
             
           </a>
@@ -10232,6 +10312,18 @@ unique namespace for your extensions.</p>
   <div class="option-default">Default: <code>[ ]</code></div>
   <div class="option-example">Example: <code>[ config.boot.kernelPackages.nvidia_x11 ]</code></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/kernel.nix" target="_blank">&lt;finix/modules/boot/kernel.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-boot.init">
+  <h3 class="option-name">
+    <a href="#option-boot.init" class="option-anchor">boot.init</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>absolute path</code></div>
+  <div class="option-description"><html><head></head><body><p>Executable run as stage-2 PID 1, symlinked as <code>${config.system.build.toplevel}/init</code>.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>"${config.finit.package}/bin/finit"</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot" target="_blank">&lt;finix/modules/boot&gt;</a></code></div>
 </div>
 <div class="option" id="option-boot.initrd.availableKernelModules">
   <h3 class="option-name">
@@ -11532,7 +11624,7 @@ that follow this format and can be used directly.</p>
   <div class="option-description"><html><head></head><body><p>Whether the installation process is allowed to modify EFI boot variables.</p>
 </body></html></div>
   <div class="option-default">Default: <code>false</code></div>
-  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/programs/limine" target="_blank">&lt;finix/modules/programs/limine&gt;</a></code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/efi.nix" target="_blank">&lt;finix/modules/boot/efi.nix&gt;</a></code></div>
 </div>
 <div class="option" id="option-boot.loader.efi.efiSysMountPoint">
   <h3 class="option-name">
@@ -11544,7 +11636,33 @@ that follow this format and can be used directly.</p>
   <div class="option-description"><html><head></head><body><p>Where the EFI System Partition is mounted.</p>
 </body></html></div>
   <div class="option-default">Default: <code>"/boot"</code></div>
-  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/programs/limine" target="_blank">&lt;finix/modules/programs/limine&gt;</a></code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/efi.nix" target="_blank">&lt;finix/modules/boot/efi.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-boot.loader.script.enable">
+  <h3 class="option-name">
+    <a href="#option-boot.loader.script.enable" class="option-anchor">boot.loader.script.enable</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>boolean</code></div>
+  <div class="option-description"><html><head></head><body><p>Whether to enable an externally-provided bootloader install hook.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>false</code></div>
+  <div class="option-example">Example: <code>true</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/providers/bootloader" target="_blank">&lt;finix/modules/providers/bootloader&gt;</a></code></div>
+</div>
+<div class="option" id="option-boot.loader.script.installHook">
+  <h3 class="option-name">
+    <a href="#option-boot.loader.script.installHook" class="option-anchor">boot.loader.script.installHook</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>absolute path</code></div>
+  <div class="option-description"><html><head></head><body><p>A program that installs the bootloader. Called with one argument: the path to the system toplevel.</p>
+<p>This is the same contract as <a class="option-reference" href="options.html#option-providers.bootloader.installHook"><code class="nixos-option">providers.bootloader.installHook</code></a>.
+Setting this option wires the hook into the <code>script</code> <code>providers.bootloader</code> backend automatically.</p>
+</body></html></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/providers/bootloader" target="_blank">&lt;finix/modules/providers/bootloader&gt;</a></code></div>
 </div>
 <div class="option" id="option-boot.modprobeConfig.enable">
   <h3 class="option-name">
@@ -11557,6 +11675,18 @@ that follow this format and can be used directly.</p>
 </body></html></div>
   <div class="option-default">Default: <code>true</code></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/modprobe.nix" target="_blank">&lt;finix/modules/boot/modprobe.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-boot.resumeDevice">
+  <h3 class="option-name">
+    <a href="#option-boot.resumeDevice" class="option-anchor">boot.resumeDevice</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>string</code></div>
+  <div class="option-description"><html><head></head><body><p>Device from which to resume after hibernation. Empty = disabled. When set, adds resume=&lt;device&gt; to boot.kernelParams.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>""</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/kernel.nix" target="_blank">&lt;finix/modules/boot/kernel.nix&gt;</a></code></div>
 </div>
 <div class="option" id="option-boot.supportedFilesystems._9p_.enable">
   <h3 class="option-name">
@@ -15198,7 +15328,7 @@ It also determines the character set, such as UTF-8.</p>
     <span class="copy-link" title="Copy link to this option"></span>
     <span class="copy-feedback">Link copied!</span>
   </h3>
-  <div class="option-type">Type: <code>absolute path</code></div>
+  <div class="option-type">Type: <code>null or absolute path</code></div>
   <div class="option-description"><html><head></head><body><p>Customized pkg.glibcLocales package.</p>
 <p>Changing this option can disable handling of i18n.defaultLocale
 and supportedLocale.</p>
@@ -15293,7 +15423,7 @@ accidentally on a wrong machine.</p>
     <span class="copy-feedback">Link copied!</span>
   </h3>
   <div class="option-type">Type: <code>attribute set of list of string</code></div>
-  <div class="option-description"><html><head></head><body><p>Locally defined maps of hostnames to IP addresses.</p>
+  <div class="option-description"><html><head></head><body><p>Locally defined maps of IP addresses to hostnames.</p>
 </body></html></div>
   <div class="option-default">Default: <code>{ }</code></div>
   <div class="option-example">Example: <pre><code>{
@@ -17441,7 +17571,7 @@ configuration. Card-specific drivers that need explicit configuration
     <span class="copy-link" title="Copy link to this option"></span>
     <span class="copy-feedback">Link copied!</span>
   </h3>
-  <div class="option-type">Type: <code>one of "limine", "none"</code></div>
+  <div class="option-type">Type: <code>one of "limine", "none", "script"</code></div>
   <div class="option-description"><html><head></head><body><p>The selected module which should implement functionality for the <code class="nixos-option">providers.bootloader</code> contract.</p>
 </body></html></div>
   <div class="option-default">Default: <code>"none"</code></div>
@@ -18934,18 +19064,6 @@ for additional details.</p>
 for additional details.</p>
 </body></html></div>
   <div class="option-default">Default: <code>{ }</code></div>
-  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/services/dhcpcd" target="_blank">&lt;finix/modules/services/dhcpcd&gt;</a></code></div>
-</div>
-<div class="option" id="option-services.dhcpcd.settings.background">
-  <h3 class="option-name">
-    <a href="#option-services.dhcpcd.settings.background" class="option-anchor">services.dhcpcd.settings.background</a>
-    <span class="copy-link" title="Copy link to this option"></span>
-    <span class="copy-feedback">Link copied!</span>
-  </h3>
-  <div class="option-type">Type: <code>null or boolean</code></div>
-  <div class="option-description"><html><head></head><body><p>Fork to the background immediately.</p>
-</body></html></div>
-  <div class="option-default">Default: <code>null</code></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/services/dhcpcd" target="_blank">&lt;finix/modules/services/dhcpcd&gt;</a></code></div>
 </div>
 <div class="option" id="option-services.dhcpcd.settings.broadcast">
@@ -20637,7 +20755,7 @@ has coldbooted with the <code>services.mdevd.coldplug</code> rules.</p>
     <span class="copy-feedback">Link copied!</span>
   </h3>
   <div class="option-type">Type: <code>null or (unsigned integer, meaning &gt;=0)</code></div>
-  <div class="option-description"><html><head></head><body><p>After <code>mdevd</code> has handled the uevents, rebroadcast them to the netlink groups identified
+  <div class="option-description"><html><head></head><body><p>After <code>mdevd</code> has handled the uevents for hotplugged devices, rebroadcast them to the netlink groups identified
 by the mask <code class="nixos-option">nlgroups</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -23297,6 +23415,24 @@ reversals due to daylight savings, timezone or other date/time changes.</p>
   <div class="option-example">Example: <code>"/dev/sda2"</code></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
 </div>
+<div class="option" id="option-swapDevices._.discardPolicy">
+  <h3 class="option-name">
+    <a href="#option-swapDevices._.discardPolicy" class="option-anchor">swapDevices.*.discardPolicy</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>null or one of "once", "pages", "both"</code></div>
+  <div class="option-description"><html><head></head><body><p>Specify the discard policy for the swap device. If "once",
+then the discard operation will be performed once, at swapon
+invocation. If "pages", then the discard operation will be
+performed on every freed page (this is "discard" semantics
+in swap parlance, not TRIM). If "both", then both will be
+enabled. If unset, then no discard policy is applied.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>null</code></div>
+  <div class="option-example">Example: <code>"both"</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
+</div>
 <div class="option" id="option-swapDevices._.label">
   <h3 class="option-name">
     <a href="#option-swapDevices._.label" class="option-anchor">swapDevices.*.label</a>
@@ -23340,6 +23476,88 @@ a priority, starting at -1 and going down.</p>
 </body></html></div>
   <div class="option-default">Default: <code>null</code></div>
   <div class="option-example">Example: <code>100</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-swapDevices._.randomEncryption.allowDiscards">
+  <h3 class="option-name">
+    <a href="#option-swapDevices._.randomEncryption.allowDiscards" class="option-anchor">swapDevices.*.randomEncryption.allowDiscards</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>boolean</code></div>
+  <div class="option-description"><html><head></head><body><p>Whether to allow TRIM requests to the underlying device.
+This option has security implications, see the
+upstream NixOS manual section on swap encryption.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>false</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-swapDevices._.randomEncryption.cipher">
+  <h3 class="option-name">
+    <a href="#option-swapDevices._.randomEncryption.cipher" class="option-anchor">swapDevices.*.randomEncryption.cipher</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>non-empty string</code></div>
+  <div class="option-description"><html><head></head><body><p>Specify the cipher to use, see <code class="command">cryptsetup
+benchmark</code> for a list of options.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>"aes-xts-plain64"</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-swapDevices._.randomEncryption.enable">
+  <h3 class="option-name">
+    <a href="#option-swapDevices._.randomEncryption.enable" class="option-anchor">swapDevices.*.randomEncryption.enable</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>boolean</code></div>
+  <div class="option-description"><html><head></head><body><p>Encrypt swap device with a random key. This way you won't have a
+persistent swap device, the entire contents become unreadable
+after every reboot. Mutually exclusive with <code class="nixos-option">label</code>,
+since the underlying mapped device is regenerated on every boot
+and is therefore not activated through <code>/etc/fstab</code> like a
+regular swap device, but through a dedicated <code>finit</code> task.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>false</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-swapDevices._.randomEncryption.keySize">
+  <h3 class="option-name">
+    <a href="#option-swapDevices._.randomEncryption.keySize" class="option-anchor">swapDevices.*.randomEncryption.keySize</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>positive integer, meaning &gt;0</code></div>
+  <div class="option-description"><html><head></head><body><p>Specify the size of the randomly generated key, in bits.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>256</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-swapDevices._.randomEncryption.sectorSize">
+  <h3 class="option-name">
+    <a href="#option-swapDevices._.randomEncryption.sectorSize" class="option-anchor">swapDevices.*.randomEncryption.sectorSize</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>unsigned integer, meaning &gt;=0</code></div>
+  <div class="option-description"><html><head></head><body><p>Specify the sector size in bytes, or <code>0</code> to let
+<code class="command">cryptsetup</code> pick the default.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>0</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-swapDevices._.randomEncryption.source">
+  <h3 class="option-name">
+    <a href="#option-swapDevices._.randomEncryption.source" class="option-anchor">swapDevices.*.randomEncryption.source</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>non-empty string</code></div>
+  <div class="option-description"><html><head></head><body><p>Source of randomness used to generate the swap
+encryption key on every boot.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>"/dev/urandom"</code></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/filesystems/options.nix" target="_blank">&lt;finix/modules/filesystems/options.nix&gt;</a></code></div>
 </div>
 <div class="option" id="option-system.activation.enable">
