@@ -438,7 +438,7 @@
     <details class="toc-category">
       <summary title="boot.initrd">
         <span>boot.initrd</span>
-        <span class="toc-count">91</span>
+        <span class="toc-count">92</span>
       </summary>
       <ul>
         
@@ -941,6 +941,14 @@
         </li>
         
         <li>
+          <a href='#option-boot.initrd.path' title="boot.initrd.path">
+            path
+            
+            
+          </a>
+        </li>
+        
+        <li>
           <a href='#option-boot.initrd.prepend' title="boot.initrd.prepend">
             prepend
             
@@ -1275,28 +1283,6 @@
         <li>
           <a href='#option-boot.loader.script.installHook' title="boot.loader.script.installHook">
             script.installHook
-            
-            
-          </a>
-        </li>
-        
-      </ul>
-    </details>
-  </li>
-  
-  <li>
-    <details class="toc-category">
-      <summary title="boot.modprobeConfig">
-        <span>boot.modprobeConfig</span>
-        <span class="toc-count">1</span>
-      </summary>
-      <ul>
-        
-
-        
-        <li>
-          <a href='#option-boot.modprobeConfig.enable' title="boot.modprobeConfig.enable">
-            enable
             
             
           </a>
@@ -4477,6 +4463,44 @@
         <li>
           <a href='#option-programs.micro.package' title="programs.micro.package">
             package
+            
+            
+          </a>
+        </li>
+        
+      </ul>
+    </details>
+  </li>
+  
+  <li>
+    <details class="toc-category">
+      <summary title="programs.modprobe">
+        <span>programs.modprobe</span>
+        <span class="toc-count">3</span>
+      </summary>
+      <ul>
+        
+
+        
+        <li>
+          <a href='#option-programs.modprobe.blacklist' title="programs.modprobe.blacklist">
+            blacklist
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-programs.modprobe.enable' title="programs.modprobe.enable">
+            enable
+            
+            
+          </a>
+        </li>
+        
+        <li>
+          <a href='#option-programs.modprobe.extraConfig' title="programs.modprobe.extraConfig">
+            extraConfig
             
             
           </a>
@@ -10256,6 +10280,28 @@
   
   <li>
     <details class="toc-category">
+      <summary title="virtualisation.android">
+        <span>virtualisation.android</span>
+        <span class="toc-count">1</span>
+      </summary>
+      <ul>
+        
+
+        
+        <li>
+          <a href='#option-virtualisation.android.enable' title="virtualisation.android.enable">
+            enable
+            
+            
+          </a>
+        </li>
+        
+      </ul>
+    </details>
+  </li>
+  
+  <li>
+    <details class="toc-category">
       <summary title="xdg.autostart">
         <span>xdg.autostart</span>
         <span class="toc-count">1</span>
@@ -11314,6 +11360,18 @@ builds, during board bringup, or similar.</p>
 </body></html></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/initrd.nix" target="_blank">&lt;finix/modules/boot/initrd.nix&gt;</a></code></div>
 </div>
+<div class="option" id="option-boot.initrd.path">
+  <h3 class="option-name">
+    <a href="#option-boot.initrd.path" class="option-anchor">boot.initrd.path</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>list of package</code></div>
+  <div class="option-description"><html><head></head><body><p>Packages whose <code>/bin</code> is linked into the initramfs <code>PATH</code>.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>[ ]</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/initrd.nix" target="_blank">&lt;finix/modules/boot/initrd.nix&gt;</a></code></div>
+</div>
 <div class="option" id="option-boot.initrd.prepend">
   <h3 class="option-name">
     <a href="#option-boot.initrd.prepend" class="option-anchor">boot.initrd.prepend</a>
@@ -11893,18 +11951,6 @@ that follow this format and can be used directly.</p>
 Setting this option wires the hook into the <code>script</code> <code>providers.bootloader</code> backend automatically.</p>
 </body></html></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/providers/bootloader" target="_blank">&lt;finix/modules/providers/bootloader&gt;</a></code></div>
-</div>
-<div class="option" id="option-boot.modprobeConfig.enable">
-  <h3 class="option-name">
-    <a href="#option-boot.modprobeConfig.enable" class="option-anchor">boot.modprobeConfig.enable</a>
-    <span class="copy-link" title="Copy link to this option"></span>
-    <span class="copy-feedback">Link copied!</span>
-  </h3>
-  <div class="option-type">Type: <code>boolean</code></div>
-  <div class="option-description"><html><head></head><body><p>Whether to enable <code>modprobe</code> config. This is useful for systems like containers which do not require a kernel.</p>
-</body></html></div>
-  <div class="option-default">Default: <code>true</code></div>
-  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/boot/modprobe.nix" target="_blank">&lt;finix/modules/boot/modprobe.nix&gt;</a></code></div>
 </div>
 <div class="option" id="option-boot.resumeDevice">
   <h3 class="option-name">
@@ -16857,6 +16903,59 @@ default editor using the <code>EDITOR</code> environment variable.</p>
 </body></html></div>
   <div class="option-default">Default: <code>pkgs.micro</code></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/programs/micro" target="_blank">&lt;finix/modules/programs/micro&gt;</a></code></div>
+</div>
+<div class="option" id="option-programs.modprobe.blacklist">
+  <h3 class="option-name">
+    <a href="#option-programs.modprobe.blacklist" class="option-anchor">programs.modprobe.blacklist</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>(attribute set of boolean) or (list of string) convertible to it</code></div>
+  <div class="option-description"><html><head></head><body><p>Set of names of kernel modules that should not be loaded
+automatically by the hardware probing code. This can either be
+a list of modules or an attrset. In an attrset, names that are
+set to <code>true</code> represent modules that will be blacklisted.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>{ }</code></div>
+  <div class="option-example">Example: <pre><code>[
+  "cirrusfb"
+  "i2c_piix4"
+]</code></pre></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/programs/modprobe" target="_blank">&lt;finix/modules/programs/modprobe&gt;</a></code></div>
+</div>
+<div class="option" id="option-programs.modprobe.enable">
+  <h3 class="option-name">
+    <a href="#option-programs.modprobe.enable" class="option-anchor">programs.modprobe.enable</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>boolean</code></div>
+  <div class="option-description"><html><head></head><body><p>Whether to enable <a href="https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git/">modprobe</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is useful for systems like containers which do not require a kernel.</p>
+</div>
+</body></html></div>
+  <div class="option-default">Default: <code>true</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/programs/modprobe" target="_blank">&lt;finix/modules/programs/modprobe&gt;</a></code></div>
+</div>
+<div class="option" id="option-programs.modprobe.extraConfig">
+  <h3 class="option-name">
+    <a href="#option-programs.modprobe.extraConfig" class="option-anchor">programs.modprobe.extraConfig</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>strings concatenated with "\n"</code></div>
+  <div class="option-description"><html><head></head><body><p>Any additional configuration to be appended to the generated
+<code class="file-path">modprobe.conf</code>.  This is typically used to
+specify module options.  See
+<a href="https://man.archlinux.org/man/modprobe.d" class="manpage-reference">modprobe.d(5)</a> for details.</p>
+</body></html></div>
+  <div class="option-default">Default: <code>""</code></div>
+  <div class="option-example">Example: <pre><code>''
+  options parport_pc io=0x378 irq=7 dma=1
+''</code></pre></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/programs/modprobe" target="_blank">&lt;finix/modules/programs/modprobe&gt;</a></code></div>
 </div>
 <div class="option" id="option-programs.nano.defaultEditor">
   <h3 class="option-name">
@@ -24420,6 +24519,19 @@ activation.</p>
 </body></html></div>
   <div class="option-default">Default: <code>null</code></div>
   <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/users/options.nix" target="_blank">&lt;finix/modules/users/options.nix&gt;</a></code></div>
+</div>
+<div class="option" id="option-virtualisation.android.enable">
+  <h3 class="option-name">
+    <a href="#option-virtualisation.android.enable" class="option-anchor">virtualisation.android.enable</a>
+    <span class="copy-link" title="Copy link to this option"></span>
+    <span class="copy-feedback">Link copied!</span>
+  </h3>
+  <div class="option-type">Type: <code>boolean</code></div>
+  <div class="option-description"><html><head></head><body><p>Whether to enable Android container support (Waydroid).</p>
+</body></html></div>
+  <div class="option-default">Default: <code>false</code></div>
+  <div class="option-example">Example: <code>true</code></div>
+  <div class="option-declared">Declared in: <code><a href="https://github.com/finix-community/finix/blob/main/modules/virtualisation/android.nix" target="_blank">&lt;finix/modules/virtualisation/android.nix&gt;</a></code></div>
 </div>
 <div class="option" id="option-xdg.autostart.enable">
   <h3 class="option-name">
