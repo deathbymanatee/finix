@@ -1,0 +1,36 @@
+footer_text = "Generated with ndg"
+jobs = 4
+
+# Enable features
+highlight_code = true
+generate_anchors = true
+
+# Code block handling
+# tab_style = "normalize"  # converts tabs to spaces
+# syntax_queries_path = "queries" # expects '<lang>/{highlights,injections,locals}.scm'
+
+# Custom assets
+# stylesheet_paths = ["custom.css"]
+# script_paths = ["analytics.js"]
+assets_dir = "./static"
+
+# Git integration
+revision = "main"
+
+[markdown]
+extensions = ["math-dollars", "math-code", "math-latex"]
+
+# Search configuration
+# [search]
+# enable = true
+# max_heading_level = 3
+
+# SEO metadata
+[meta.opengraph]
+"og:title" = "finix"
+"og:description" = "finix - a nix-based operating system"
+"og:image" = "../assets/finix-logo.svg"
+
+[meta.tags]
+description = "finix - a nix-based operating system"
+keywords = "documentation,nix,tutorial"

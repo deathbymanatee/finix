@@ -45,7 +45,7 @@ let
       };
   };
 in
-pkgs.runCommandLocal "finix-options-doc" { nativeBuildInputs = [ pkgs.ndg ]; } ''
+pkgs.runCommandLocal "finix-documentation" { nativeBuildInputs = [ pkgs.ndg ]; } ''
   mkdir -p $out
 
   ndg html \
@@ -53,6 +53,7 @@ pkgs.runCommandLocal "finix-options-doc" { nativeBuildInputs = [ pkgs.ndg ]; } '
     --title finix \
     --module-options ${doc.optionsJSON}/share/doc/nixos/options.json \
     --manpage-urls ${./manpage-urls.json} \
-    --input-dir ${./.} \
+    --input-dir ${./inputs} \
+    --template-dir ${./templates} \
     --output-dir "$out"
 ''
