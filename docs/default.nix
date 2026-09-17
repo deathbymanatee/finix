@@ -45,14 +45,18 @@ let
       };
   };
 in
-pkgs.runCommandLocal "finix-options-doc" { nativeBuildInputs = [ pkgs.ndg ]; } ''
+pkgs.runCommandLocal "finix-documentation" { nativeBuildInputs = [ pkgs.ndg ]; } ''
   mkdir -p $out
 
-  ndg html \
+  ndg --config-file ${./ndg.toml} \
+    html \
     --jobs $NIX_BUILD_CORES \
     --title finix \
     --module-options ${doc.optionsJSON}/share/doc/nixos/options.json \
     --manpage-urls ${./manpage-urls.json} \
-    --input-dir ${./.} \
-    --output-dir "$out"
+    --input-dir ${./inputs} \
+    --template-dir ${./templates} \
+    --output-dir "$out" \
+
+  cp -r ${./static}/. $out/assets
 ''

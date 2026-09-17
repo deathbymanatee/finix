@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    {{ meta_tags_html | safe }} {{ opengraph_html | safe }}
+    {{ favicon_links | safe }}
+    <script>
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("js");
+      // Apply sidebar state immediately to prevent flash
+      (function () {
+        try {
+          if (localStorage.getItem("sidebar-collapsed") === "true") {
+            document.documentElement.classList.add("sidebar-collapsed");
+          }
+        } catch (e) {
+          // localStorage unavailable
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="{{ stylesheet_path }}" />
+    <link rel="icon" type="image/svg" href="assets/finix-logo.svg">
+    <script defer src="{{ main_js_path }}"></script>
+    {% if generate_search %}
+    <script>
+      window.searchNamespace = window.searchNamespace || {};
+      window.searchNamespace.rootPath = "{{ root_prefix }}";
+    </script>
+    <script defer src="{{ root_prefix }}assets/search-core.js"></script>
+    <script defer src="{{ search_js_path }}"></script>
+    {% endif %}
+  </head>
+  <body class="options-page">
+    <div class="container">
+      <header>
+        <div class="header-left">
+          <h1 class="site-title">
+            <a href="{{ index_path }}">{{ site_title }}</a>
+          </h1>
+        </div>
+        {{ navbar_html|safe }} {% if generate_search %}
+        <div class="search-container js-only">
+          <input type="text" id="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+          <div id="search-results" class="search-results"></div>
+        </div>
+        {% endif %}
+      </header>
+
+      <div class="layout">
+        <button
+          type="button"
+          class="sidebar-toggle js-only"
+          aria-label="Collapse sidebar"
+          aria-expanded="true"
+          aria-controls="sidebar"
+        >
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+          </svg>
+        </button>
+        <nav id="sidebar" class="sidebar" aria-label="Sidebar">
+          <details class="sidebar-section" data-section="docs" open>
+            <summary>Documents</summary>
+            <div class="sidebar-section-content">
+              <ul>
+                {{ doc_nav|safe }}
+              </ul>
+            </div>
+          </details>
+
+          {% if show_option_groups_toc %}
+          <details class="sidebar-section" data-section="option-groups" open>
+            <summary>Option Groups</summary>
+            <div class="sidebar-section-content">
+              {{ option_page_nav|safe }}
+              {{ option_groups_toc|safe }}
+            </div>
+          </details>
+          {% endif %}
+
+          <details class="sidebar-section" data-section="toc" open>
+            <summary>Contents</summary>
+            <div class="sidebar-section-content">
+              {{ toc|safe }}
+            </div>
+          </details>
+        </nav>
+
+        <main class="content">
+          <h1>{{ heading }}</h1>
+
+          {% if generate_search %}
+          <div class="search-form js-only">
+            <input
+              type="search"
+              id="options-filter"
+              aria-label="Filter options"
+              placeholder="Filter options..."
+              autocomplete="off"
+            />
+          </div>
+          <div class="search-keyboard-hints js-only" role="note" aria-label="Option keyboard shortcuts">
+            <span class="hint-item"><kbd>/</kbd> to filter</span>
+            <span class="hint-item"><kbd>↑</kbd> <kbd>↓</kbd> to browse</span>
+            <span class="hint-item"><kbd>Esc</kbd> to return to the filter</span>
+          </div>
+          {% endif %}
+
+          <div class="options-container">{{ options|safe }}</div>
+
+          <div class="footnotes-container">
+            <!-- Footnotes will be appended here -->
+          </div>
+        </main>
+      </div>
+
+      {{ footer_html|safe }}
+    </div>
+
+    {{ custom_scripts|safe }}
+  </body>
+</html>
